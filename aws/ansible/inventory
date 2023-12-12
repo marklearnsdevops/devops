@@ -1,3 +1,4 @@
 [servers]
 server01 ansible_host=10.0.0.44 ansible_connection=ssh ansible_user=ec2-user
 server02 ansible_host=10.0.0.198 ansible_connection=ssh ansible_user=ec2-user
+server03 ansible_host=10.0.0.162 ansible_connection=ssh ansible_user=ec2-user
