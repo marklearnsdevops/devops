@@ -1,18 +1,13 @@
 #install HTTPD using Ansible
-- name: Install HTTPD on my server list
+- name: Create local admin to servers
   hosts: servers
-  become: True
   tasks:
-     - name: Install httpd
-       yum: name=httpd state=latest
+     - name: Create CloudCOE user
+       user:
+         name: CloudCOE
+         uid: 1040
+         group: wheel
 
-     - name: Start httpd service
-       service:
-         name: httpd
-         state: started
-
-     - name: Enable httpd service
-       service:
-         name: httpd
-         enabled: yes 
          
+
+     
