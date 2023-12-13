@@ -1,6 +1,7 @@
 #Ansible commands
-- name: Set a hostname
+- hosts: all
+  name: Set a hostname specifying strategy
   ansible.builtin.hostname:
-    name: slave1
+    name: web01
     use: systemd
 
