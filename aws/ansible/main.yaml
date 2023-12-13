@@ -3,6 +3,7 @@
   tasks:
     - name: set hostname
       hostname:
-        name: slave1
+        name: "{{ inventory_hostname }}"
+
 
 
