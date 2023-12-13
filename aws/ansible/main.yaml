@@ -1,0 +1,17 @@
+#install HTTPD using Ansible
+- name: Install HTTPD on my server list
+  hosts: servers
+  become: True
+  tasks:
+     - name: Install httpd
+       yum: name=httpd state=latest
+
+     - name: Start httpd service
+       service:
+         name: httpd
+         state: started
+
+     - name: Enable httpd service
+       service:
+         name: httpd
+         enabled: yes 
