@@ -1,9 +1,4 @@
-#Remove users in hosts
-- name: Delete CloudCOE user
-  hosts: servers
-  tasks:
-    - name: Delete CloudCOE
-      ansible.builtin.user:
-         name: CloudCOE
-         state: "absent"
-         remove: true
+#Ansible commands
+- name: Set a hostname
+  ansible.builtin.hostname:
+    name: slave1
