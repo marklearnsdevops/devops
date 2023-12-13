@@ -1,7 +1,8 @@
-#Ansible commands
+#ansible samples
 - hosts: all
-  name: Set a hostname specifying strategy
-  ansible.builtin.hostname:
-    name: web01
-    use: systemd
+  tasks:
+    - name: set hostname
+      hostname:
+        name: slave1
+
 
