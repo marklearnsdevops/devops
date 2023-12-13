@@ -6,8 +6,8 @@
         name: "{{ inventory_hostname }}"
     
     - name: set timezone to EST
-      timezone:
-        name: EST
+      community.general.timezone:
+        name: US/Eastern
 
 
 
