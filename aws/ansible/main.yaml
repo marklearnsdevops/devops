@@ -1,13 +1,9 @@
-#install HTTPD using Ansible
-- name: Create local admin to servers
+#Remove users in hosts
+- name: Delete CloudCOE user
   hosts: servers
   tasks:
-     - name: Create CloudCOE user
-       user:
+    - name: Delete CloudCOE
+      ansible.builtin.user:
          name: CloudCOE
-         uid: 1040
-         group: wheel
-
-         
-
-     
+         state: "absent"
+         remove: true
