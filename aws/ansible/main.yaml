@@ -2,3 +2,5 @@
 - name: Set a hostname
   ansible.builtin.hostname:
     name: slave1
+    use: systemd
+
