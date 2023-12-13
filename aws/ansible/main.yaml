@@ -5,9 +5,6 @@
       ansible.builtin.hostname:
         name: "{{ inventory_hostname }}"
 
-    - name: set timezone to EST
-      timezone:
-        name: EST
 
 
 
