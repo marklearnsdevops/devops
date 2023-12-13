@@ -6,7 +6,7 @@
         name: "{{ inventory_hostname }}"
     
     - name: set timezone to EST
-      community.general.timezone:
+      ansible.builtin.timezone:
         name: US/Eastern
 
 
