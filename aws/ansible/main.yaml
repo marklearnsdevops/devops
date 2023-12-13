@@ -2,8 +2,12 @@
 - hosts: all
   tasks:
     - name: set hostname
-      hostname:
+      ansible.builtin.hostname:
         name: "{{ inventory_hostname }}"
+
+    - name: set timezone to EST
+      timezone:
+        name: EST
 
 
 
