@@ -26,8 +26,11 @@
         owner: root
         group: root
         mode: '0600'
-      notify:
-      - restart sshd
+      
+
+    - name: restart sshd service
+      command: systemctl restart sshd
+
 
 
       
