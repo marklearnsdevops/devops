@@ -10,20 +10,25 @@
     
     - name: create cloudcoe user in all servers
       user:
-        name: cloudcoe
+        name: cloudcoe1
         password: "{{ 'cloudcoe123' | password_hash('sha512') }}"
         state: present
         createhome: yes
     
     - name: add cloudcoe to wheel group
-      command: usermod -aG wheel cloudcoe
+      command: usermod -aG wheel cloudcoe1
 
-    - name: add cloudcoe to sudoers
-      ansible.builtin.copy:
-        src: "{{ sudoers }}"
-        dest: /etc/sudoers.d
-        validate: /usr/sbin/visudo -csf %s
-      #loop: "{{ sudoers }}"
+    - name: change PasswordAuthenticaion
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config.d/50-cloud-init.conf
+        regexp: '^PasswordAuthentication'
+        line: PasswordAuthentication yes
+        owner: root
+        group: root
+        mode: '0600'
+      notify:
+      - restart sshd
+
 
       
 
