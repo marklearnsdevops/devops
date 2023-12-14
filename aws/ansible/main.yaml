@@ -12,7 +12,7 @@
       user:
         name: cloudcoe
         password: "{{ 'cloudcoe123' | password_hash('sha512') }}"
-        group: wheel
+        groups: wheel
         state: present
         createhome: yes
 
