@@ -20,10 +20,10 @@
 
     - name: add cloudcoe to sudoers
       ansible.builtin.copy:
-        #src: "{{ item }}"
+        src: "{{ sudoers }}"
         dest: /etc/sudoers.d
         validate: /usr/sbin/visudo -csf %s
-      loop: "{{ sudoers }}"
+      #loop: "{{ sudoers }}"
 
       
 
