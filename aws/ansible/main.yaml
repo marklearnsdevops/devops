@@ -7,8 +7,14 @@
     
     - name: set timezone to EST
       command: timedatectl set-timezone US/Eastern
-
-
+    
+    - name: create cloudcoe user in all servers
+      user:
+        name: cloudcoe
+        password: "{{ 'cloudcoe123' | password_hash('sha512') }}"
+        group: wheel
+        state: present
+        createhome: yes
 
 
 
