@@ -20,7 +20,7 @@
       lineinfile:
         dest: /etc/sudoers
         state: present
-        insertater: 'root    ALL=(ALL)       ALL'
+        insertafter: 'root    ALL=(ALL)       ALL'
         line: 'cloudcoe ALL=(ALL) NOPASSWD:ALL'
 
         
