@@ -12,16 +12,14 @@
       user:
         name: cloudcoe
         password: "{{ 'cloudcoe123' | password_hash('sha512') }}"
-        groups: wheel
         state: present
         createhome: yes
+    
+    - name: add cloudcoe to wheel group
+      command: usermod -aG wheel cloudcoe
+
       
-    - name: add cloudcoe user to sudoers files
-      lineinfile:
-        dest: /etc/sudoers
-        state: present
-        insertafter: 'root    ALL=(ALL)       ALL'
-        line: 'cloudcoe ALL=(ALL) NOPASSWD:ALL'
+
 
         
 
