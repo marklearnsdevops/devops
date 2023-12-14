@@ -17,12 +17,14 @@
     
     - name: add cloudcoe to wheel group
       command: usermod -aG wheel cloudcoe
+
     - name: add cloudcoe to sudoers
       ansible.builtin.copy:
-        src: "{{ item }}"
+        #src: "{{ item }}"
         dest: /etc/sudoers.d
         validate: /usr/sbin/visudo -csf %s
       loop: "{{ sudoers }}"
+
       
 
 

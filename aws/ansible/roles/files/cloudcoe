@@ -1,3 +1,4 @@
 ## Grant Sudoers access to the following user
 
 %cloudcoe  ALL=(ALL) NOPASSWD: ALL
+
