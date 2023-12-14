@@ -15,7 +15,14 @@
         groups: wheel
         state: present
         createhome: yes
+      
+    - name: add cloudcoe user to sudoers files
+      blockinfile:
+        path: /etc/sudoers
+        insertafter: 'root    ALL=(ALL)       ALL'
+        block:  |
+          cloudcoe  ALL=(ALL) NOPASSWD: ALL
 
-
+        
 
 
