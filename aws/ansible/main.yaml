@@ -6,8 +6,8 @@
         name: "{{ inventory_hostname }}"
     
     - name: set timezone to EST
-      timezone:
-        name: US/Eastern
+      command: timedatectl set-timezone US/Eastern
+
 
 
 
