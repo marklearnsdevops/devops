@@ -17,7 +17,7 @@
         createhome: yes
     
     - name: Add cloudcoe to wheel group
-      command: usermod -aG wheel cloudcoe1
+      command: usermod -aG wheel cloudcoe
 
     - name: Change PasswordAuthenticaion
       ansible.builtin.lineinfile:
@@ -29,6 +29,14 @@
         mode: '0600'
       #notify:
       #- restart sshd 
+    - name: Add NOPASSWD in sudoers
+      ansible.buildint.lineinfile:
+        path: /etc/sudoers
+        regexp: '^%wheel'
+        line: %wheel  ALL=(ALL)       NOPASSWD: ALL
+        owner: root
+        group: root
+        mode: '0440'
 
     - name: Restart sshd service
       service:
