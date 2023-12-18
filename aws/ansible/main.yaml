@@ -31,7 +31,7 @@
       #- restart sshd 
 
     - name: Add NOPASSWD in sudoers
-      ansible.buildint.lineinfile:
+      ansible.builtint.lineinfile:
         path: /etc/sudoers
         state: present
         regexp: '^%wheel'
