@@ -34,16 +34,26 @@
         name: sshd
         state: restarted
 
-    - name: Check OS version of the server
-      command: cat /etc/redhat-release
-      register: os_version
+    - name: hostname
+      command: hostname
+      register: command_output
 
-    - name: Copy OS name to text file
+    - name: cat /etc/redhat-release
+      command: cat redhat-release chdir=/etc
+
+    - name: Create your local file on master node
+      ansible.builtin.file:
+        path: /devops/aws/ansible/results/{{ inventory_hostname }}.txt
+        owner: master
+        group: master
+        mode: '0644'
       delegate_to: localhost
-      copy:
-        content: "{{ os_version.stdout_lines | to_nice_json }}"
-        dest: "/devops/aws/ansible/results/{{ inventory_hostname }}.txt"
-    
+
+    - name: Print output to file
+      ansible.builtin.copy:
+        content: "{{command_output.stdout}}"
+        dest: /devops/aws/ansible/results/{{ inventory_hostname }}.txt
+      delegate_to: localhost
 
 
       
