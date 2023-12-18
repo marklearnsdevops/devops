@@ -34,14 +34,14 @@
         name: sshd
         state: restarted
 
-    - name: Check hostname of the server
-      command: hostname
-      register: os_hostname
+    - name: Check OS version of the server
+      command: cat /etc/redhat-release
+      register: os_version
 
     - name: Copy OS name to text file
       delegate_to: localhost
       copy:
-        content: "{{ os_hostname_stdout_lines | to_nice_json }}"
+        content: "{{ os_version_stdout_lines | to_nice_json }}"
         dest: "/devops/aws/ansible/results/{{ inventory_hostname }}.txt"
     
 
