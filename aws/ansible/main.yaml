@@ -36,21 +36,13 @@
 
     - name: Check hostname of the server
       command: hostname
+      register: os_hostname
 
-    - name: Create your local file on master node
-      ansible.builtin.file:
-        path: /devops/aws/ansible/{{ inventory_hostname }}.txt
-        owner: master
-        group: master
-        mode: '0644'
+    - name: Copy OS name to text file
       delegate_to: localhost
-
-    - name: Print output to file
-      ansible.builtin.copy:
-        content: "{{command_output.stdout}}"
-        dest: /devops/aws/ansible/{{ inventory_hostname }}.txt
-      delegate_to: localhost
-
+      copy:
+        content: "{{ os_hostname_stdout_lines | to_nice_json }}"
+        dest: "/devops/aws/ansible/results/{{ inventory_hostname }}.txt"
     
 
 
