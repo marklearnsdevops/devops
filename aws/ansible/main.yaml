@@ -1,5 +1,6 @@
 #ansible samples
-- hosts: all
+- become: true 
+  hosts: all
   tasks:
     - name: Set hostname
       ansible.builtin.hostname:
@@ -38,5 +39,26 @@
       ansible.builtin.yum:
         name: '*'
         state: latest
+
+    - name: hostname
+      command: hostname
+      register: command_output
+    - name: Print OS version
+      command: cat /etc/os-release
+
+    - name: Create output file in master node
+      ansible.builtin.file:
+        path: /devops/aws/ansible/{{ test }}.txt
+        owner: cloudcoe
+        group: cloudcoe
+        mode: '0644'
+      delegate_to: localhost
+
+    - name: Print output to file
+      ansible.builtin.copy:
+        content: "{{command_output.stdout}}"
+        dest: /devops/aws/ansible/{{ test }}.txt
+      delegate_to: localhost
+
 
     
