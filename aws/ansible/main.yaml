@@ -33,11 +33,11 @@
     - name: Add NOPASSWD in sudoers
       ansible.buildint.lineinfile:
         path: /etc/sudoers
+        state: present
         regexp: '^%wheel'
-        line: %wheel ALL=(ALL) NOPASSWD:ALL
-        owner: root
-        group: root
-        mode: '0440'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %s
+       
 
     - name: Restart sshd service
       service:
