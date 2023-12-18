@@ -47,12 +47,14 @@
         owner: master
         group: master
         mode: '0644'
+        state: present
       delegate_to: localhost
 
     - name: Print output to file
       ansible.builtin.copy:
         content: "{{command_output.stdout}}"
         dest: /home/master/devops/aws/ansible/{{ inventory_hostname }}.txt
+        state: present
       delegate_to: localhost
 
 
