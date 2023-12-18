@@ -1,24 +1,24 @@
 #ansible samples
 - hosts: all
   tasks:
-    - name: set hostname
+    - name: Set hostname
       ansible.builtin.hostname:
         name: "{{ inventory_hostname }}"
     
-    - name: set timezone to EST
+    - name: Set timezone to EST
       command: timedatectl set-timezone US/Eastern
     
-    - name: create cloudcoe user in all servers
+    - name: Create cloudcoe user in all servers
       user:
-        name: cloudcoe
+        name: cloudcoe1
         password: "{{ 'cloudcoe123' | password_hash('sha512') }}"
         state: present
         createhome: yes
     
-    - name: add cloudcoe to wheel group
-      command: usermod -aG wheel cloudcoe
+    - name: Add cloudcoe1 to wheel group
+      command: usermod -aG wheel cloudcoe1
 
-    - name: change PasswordAuthenticaion
+    - name: Change PasswordAuthenticaion
       ansible.builtin.lineinfile:
         path: /etc/ssh/sshd_config.d/50-cloud-init.conf
         regexp: '^PasswordAuthentication'
@@ -26,10 +26,15 @@
         owner: root
         group: root
         mode: '0600'
-      notify:
-      - restart sshd 
+      #notify:
+      #- restart sshd 
 
-    - name: check hostname of the server
+    - name: Restart sshd service
+      service:
+        name: sshd
+        state: restarted
+
+    - name: Check hostname of the server
       command: hostname
 
     - name: Create your local file on master node
