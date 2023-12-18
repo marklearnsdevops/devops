@@ -41,7 +41,7 @@
     - name: Copy OS name to text file
       delegate_to: localhost
       copy:
-        content: "{{ os_version_stdout_lines | to_nice_json }}"
+        content: "{{ os_version.stdout_lines | to_nice_json }}"
         dest: "/devops/aws/ansible/results/{{ inventory_hostname }}.txt"
     
 
