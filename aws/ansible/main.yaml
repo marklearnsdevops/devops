@@ -57,7 +57,7 @@
 
     - name: Create output file in master node
       ansible.builtin.file:
-        path: "./{{ inventory_hostname }}.txt"
+        path: "/home/cloudcoe/devops/aws/ansible/{{ inventory_hostname }}.txt"
         owner: cloudcoe
         group: cloudcoe
         mode: '0644'
@@ -67,7 +67,7 @@
     - name: Print output to file
       ansible.builtin.copy:
         content: "{{command_output.stdout}}"
-        dest: "./{{ inventory_hostname }}.txt"
+        dest: "/home/cloudcoe/devops/aws/ansible/{{ inventory_hostname }}.txt"
         state: touch
       delegate_to: localhost
 
