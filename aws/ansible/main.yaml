@@ -43,7 +43,7 @@
 
     - name: Create your local file on master node
       ansible.builtin.file:
-        path: /devops/aws/ansible/{{ inventory_hostname }}.txt
+        path: /home/master/devops/aws/ansible/{{ inventory_hostname }}.txt
         owner: master
         group: master
         mode: '0644'
@@ -52,7 +52,7 @@
     - name: Print output to file
       ansible.builtin.copy:
         content: "{{command_output.stdout}}"
-        dest: /devops/aws/ansible/{{ inventory_hostname }}.txt
+        dest: /home/master/devops/aws/ansible/{{ inventory_hostname }}.txt
       delegate_to: localhost
 
 
