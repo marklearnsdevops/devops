@@ -11,12 +11,12 @@
     
     - name: Create cloudcoe user in all servers
       user:
-        name: cloudcoe1
+        name: cloudcoe
         password: "{{ 'cloudcoe123' | password_hash('sha512') }}"
         state: present
         createhome: yes
     
-    - name: Add cloudcoe1 to wheel group
+    - name: Add cloudcoe to wheel group
       command: usermod -aG wheel cloudcoe1
 
     - name: Change PasswordAuthenticaion
