@@ -64,6 +64,9 @@
         createhome: yes
       loop: "{{ users }}"
 
+    - name: Add users in wheel group
+      command: usermod -aG wheel {{ users }}
+
 
 
 
