@@ -1,2 +1,0 @@
-%admin  ALL=(ALL) NOPASSWD: ALL
-%user1  ALL=(ALL) NOPASSWD: ALL

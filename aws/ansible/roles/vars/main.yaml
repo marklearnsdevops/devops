@@ -3,5 +3,3 @@ users:
 - user1
 
 users_password: P@ssw0rd01
-sudoers_filename:
-- sudo_users

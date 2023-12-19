@@ -60,16 +60,13 @@
       user:
         name: "{{ item }}"
         password: "{{ users_password }}"
+        groups: wheel
+        append: yes
         state: present
         createhome: yes
       loop: "{{ users }}"
 
-    - name: Copy a new "sudoers" file into place
-      ansible.builtin.copy:
-        src: "{{ item }}"
-        dest: /etc/sudoers.d
-        validate: /usr/sbin/visudo -csf %s
-      loop: "{{ sudoers_filename }}"
+
 
 
 
