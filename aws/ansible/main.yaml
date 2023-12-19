@@ -2,7 +2,7 @@
 - become: true 
   hosts: all
   vars_files:
-    - ./././main.yaml
+    - ../../../main.yaml
   tasks:
     - name: Set hostname
       ansible.builtin.hostname:
