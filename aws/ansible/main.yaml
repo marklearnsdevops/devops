@@ -62,7 +62,7 @@
         password: "{{ users_password }}"
         state: present
         createhome: yes
-      loop: "{{ users }}"
+
 
 
 

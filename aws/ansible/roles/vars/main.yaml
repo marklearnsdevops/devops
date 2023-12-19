@@ -1,5 +1,5 @@
 users:
-- admin
-- user1
+  - { name: admin }
+  - { name: user1 }
 
 users_password: P@ssw0rd01
