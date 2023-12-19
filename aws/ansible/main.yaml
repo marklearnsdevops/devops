@@ -58,10 +58,11 @@
 
     - name: Create other users using vars
       user:
-        name: "{{ users }}"
+        name: "{{ item }}"
         password: "{{ users_password }}"
         state: present
         createhome: yes
+      loop: "{{ users }}"
 
 
 
