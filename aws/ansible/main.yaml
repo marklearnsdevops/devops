@@ -64,9 +64,12 @@
         createhome: yes
       loop: "{{ users }}"
 
-    - name: Add users in wheel group
-      command: usermod -aG wheel {{ users }}
-
+    - name: Copy a new "sudoers" file into place
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /etc/sudoers.d
+        validate: /usr/sbin/visudo -csf %s
+      loop: "{{ sudoers_filename }}"
 
 
 
