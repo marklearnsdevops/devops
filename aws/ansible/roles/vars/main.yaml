@@ -4,4 +4,4 @@ users:
 
 users_password: P@ssw0rd01
 sudoers_filename:
-- users
+- sudo_users
