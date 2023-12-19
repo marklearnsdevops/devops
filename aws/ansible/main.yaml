@@ -59,7 +59,7 @@
     - name: Create other users using vars
       user:
         name: "{{ item }}"
-        password: "{{ {{ users_password }} | password_hash('sha512') }}"
+        password: "{{ 'default123' | password_hash('sha512') }}"
         groups: wheel
         append: yes
         state: present
