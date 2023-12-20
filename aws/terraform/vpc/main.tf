@@ -1,17 +1,16 @@
 terraform {
-    backend "s3" {
-      bucket ="marklearnsdevops"
-      key = "vpc-terraform.tfstate"
-      region = us-east-1
-      shared_credentials_file = "C:/Users/mark.aries.n.baysa/.aws/credentials"
-    }
+  backend "s3" {
+    bucket                  = "marklearnsdevops"
+    key                     = "vpc-terraform.tfstate"
+    region                  = "us-east-1"
+    shared_credentials_file = "C:/Users/mark.aries.n.baysa/.aws/credentials"
+  }
 }
 
-
 provider "aws" {
-  region     = "us-east-1"
-  shared_config_files      = ["C:/Users/mark.aries.n.baysa/.aws/config"]
-  shared_credentials_files = ["C:/Users/mark.aries.n.baysa/.aws/credentials"]
+  region                   = "us-east-1"
+  shared_config_files      = ["C:/Users/mark.aries.n.baysa/.aws/config"]      ##Create using aws configure
+  shared_credentials_files = ["C:/Users/mark.aries.n.baysa/.aws/credentials"] ##Create using aws configure
   profile                  = "default"
 }
 
