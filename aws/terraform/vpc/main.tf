@@ -7,7 +7,6 @@ terraform {
   }
 }
 
-###
 provider "aws" {
   region                   = "us-east-1"
   shared_config_files      = ["C:/Users/mark.aries.n.baysa/.aws/config"]      ##Create using aws configure
