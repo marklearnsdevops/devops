@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket                  = "marklearnsdevops"
-    key                     = "master-terraform.tfstate"
+    key                     = "slave-terraform.tfstate"
     region                  = "us-east-1"
     shared_credentials_file = "C:/Users/mark.aries.n.baysa/.aws/credentials"
   }
