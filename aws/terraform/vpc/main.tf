@@ -6,7 +6,8 @@ terraform {
     shared_credentials_file = "C:/Users/mark.aries.n.baysa/.aws/credentials"
   }
 }
-##
+
+## AWS Provider
 provider "aws" {
   region                   = var.region
   shared_config_files      = var.shared_config_files      ##Create using aws configure
