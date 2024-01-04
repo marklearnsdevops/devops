@@ -26,3 +26,43 @@ resource "aws_s3_bucket" "mybucket" {
     }
 }
 
+# Private ACL bucket
+resource "aws_s3_bucket_ownership_controls" "ownership" {
+  bucket = aws_s3_bucket.mybucket.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "acl" {
+  bucket = aws_s3_bucket.mybucket.id
+    acl = "private"
+}
+
+
+# Public ACL bucket
+# resource "aws_s3_bucket_ownership_controls" "ownership" {
+#   bucket = aws_s3_bucket.mybucket.id
+#   rule {
+#     object_ownership = "BucketOwnerPreferred"
+#   }
+# }
+
+# resource "aws_s3_bucket_public_access_block" "public" {
+#   bucket = aws_s3_bucket.mybucket.id
+
+#   block_public_acls = false
+#   block_public_policy = false
+#   ignore_public_acls = false
+#   restrict_public_buckets = false
+# }
+
+# resource "aws_s3_bucket_acl" "acl" {
+#   depends_on = [
+#     aws_s3_bucket_ownership_controls.ownership,
+#     aws_s3_bucket_public_access_block.public,
+#    ]
+
+#    bucket = aws_s3_bucket.mybucket.id
+#    acl = "public-read"
+#}
