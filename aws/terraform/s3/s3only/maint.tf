@@ -26,25 +26,25 @@ resource "aws_s3_bucket" "mybucket" {
     }
 }
 
-# Private ACL bucket
+# Create S3 bucket with private ACL
 resource "aws_s3_bucket_ownership_controls" "ownership" {
   bucket = aws_s3_bucket.mybucket.id
   rule {
-    object_ownership = "BucketOwnerPreferred"
+    object_ownership = var.bucket_ownership
   }
 }
 
 resource "aws_s3_bucket_acl" "acl" {
   bucket = aws_s3_bucket.mybucket.id
-    acl = "private"
+    acl = var.acl
 }
 
 
-# Public ACL bucket
+# Create S3 bucket with public ACL
 # resource "aws_s3_bucket_ownership_controls" "ownership" {
 #   bucket = aws_s3_bucket.mybucket.id
 #   rule {
-#     object_ownership = "BucketOwnerPreferred"
+#     object_ownership = var.bucket_ownership
 #   }
 # }
 
@@ -64,5 +64,5 @@ resource "aws_s3_bucket_acl" "acl" {
 #    ]
 
 #    bucket = aws_s3_bucket.mybucket.id
-#    acl = "public-read"
-#}
+#    acl = var.acl
+# }

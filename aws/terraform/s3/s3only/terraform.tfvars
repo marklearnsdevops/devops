@@ -5,3 +5,5 @@ shared_credentials_files = ["C:/Users/mark.aries.n.baysa/.aws/credentials"]
 #profile = "default"
 
 bucketname = "markwanttolearndevops"
+bucket_ownership = "BucketOwnerPreferred"
+acl = "private"

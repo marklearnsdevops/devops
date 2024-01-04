@@ -6,3 +6,5 @@ variable profile {
 }
 
 variable bucketname {}
+variable bucket_ownership {}
+variable acl {}
