@@ -1,8 +1,8 @@
 #ansible samples
 - become: true 
   hosts: all
-  vars_files:
-    - ./roles/vars/main.yaml
+  # vars_files:
+  #   - ./roles/vars/main.yaml
   tasks:
     - name: Set hostname
       ansible.builtin.hostname:
@@ -18,8 +18,14 @@
         state: present
         createhome: yes
     
-    - name: Add cloudcoe to wheel group
-      command: usermod -aG wheel cloudcoe
+    # - name: Add cloudcoe to wheel group
+    #   command: usermod -aG wheel cloudcoe
+
+    - name: Add users in sudoers.d
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /etc/sudoers.d
+        validate: /usr/sbin/visudo -csf %s
 
     - name: Change PasswordAuthenticaion
       ansible.builtin.lineinfile:
@@ -32,13 +38,13 @@
       #notify:
       #- restart sshd 
 
-    - name: Add NOPASSWD in sudoers
-      ansible.builtin.lineinfile:
-        path: /etc/sudoers
-        state: present
-        regexp: '^%wheel'
-        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
-        validate: /usr/sbin/visudo -cf %s
+    # - name: Add NOPASSWD in sudoers
+    #   ansible.builtin.lineinfile:
+    #     path: /etc/sudoers
+    #     state: present
+    #     regexp: '^%wheel'
+    #     line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    #     validate: /usr/sbin/visudo -cf %s
        
     - name: Restart sshd service
       service:
@@ -56,15 +62,15 @@
     #- name: Print OS version
     #  command: cat /etc/os-release
 
-    - name: Create other users using vars
-      user:
-        name: "{{ item }}"
-        password: "{{ 'default123' | password_hash('sha512') }}"
-        groups: wheel
-        append: yes
-        state: present
-        createhome: yes
-      loop: "{{ users }}"
+    # - name: Create other users using vars
+    #   user:
+    #     name: "{{ item }}"
+    #     password: "{{ 'default123' | password_hash('sha512') }}"
+    #     groups: wheel
+    #     append: yes
+    #     state: present
+    #     createhome: yes
+    #   loop: "{{ users }}"
 
 
 
