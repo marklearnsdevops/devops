@@ -37,8 +37,11 @@
         owner: root
         group: root
         mode: '0600'
-      #notify:
-      #- restart sshd 
+    
+    - name: restart SSHD service
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
 
     # - name: Add NOPASSWD in sudoers
     #   ansible.builtin.lineinfile:
@@ -47,10 +50,8 @@
     #     regexp: '^%wheel'
     #     line: '%wheel ALL=(ALL) NOPASSWD: ALL'
     #     validate: /usr/sbin/visudo -cf %s
-       
-    - name: Restart sshd service
-      handlers:
-        - import_tasks: ./roles/handlers/main.yaml
+    
+
 
     - name: Run yum update
       ansible.builtin.yum:
