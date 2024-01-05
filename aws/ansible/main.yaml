@@ -49,9 +49,8 @@
     #     validate: /usr/sbin/visudo -cf %s
        
     - name: Restart sshd service
-      service:
-        name: sshd
-        state: restarted
+      notify:
+      - restart sshd service
 
     - name: Run yum update
       ansible.builtin.yum:
