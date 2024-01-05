@@ -1,8 +1,8 @@
 #ansible samples
 - become: true 
   hosts: all
-  # vars_files:
-  #   - ./roles/vars/main.yaml
+  vars_files:
+    - ./roles/vars/main.yaml
   tasks:
     - name: Set hostname
       ansible.builtin.hostname:
