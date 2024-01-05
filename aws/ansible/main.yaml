@@ -1,6 +1,8 @@
 #ansible samples
 - become: true 
   hosts: all
+  user: cloudcoe
+  sudo: yes
   # vars_files:
   #   - ./roles/vars/main.yaml
   tasks:
