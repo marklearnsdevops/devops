@@ -84,7 +84,7 @@
         owner: cloudcoe
         group: cloudcoe
         mode: '0644'
-        state: file
+        state: touch
       delegate_to: localhost
 
     - name: Print output to file
