@@ -22,11 +22,11 @@
     #   command: usermod -aG wheel cloudcoe
 
     - name: Add users in sudoers.d
-      ansible.builtin.copy:
-        src: "{{ item }}"
-        dest: /etc/sudoers.d
-        validate: /usr/sbin/visudo -csf %s
-      loop: "{{ sudoers_filename }}"
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/admin
+        line: 'cloudcoe ALL=(ALL) NOPASSWD:ALL'
+        validate: usr/sbin/visudo -cf %s
+      
 
     - name: Change PasswordAuthenticaion
       ansible.builtin.lineinfile:
