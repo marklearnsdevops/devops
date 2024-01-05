@@ -26,6 +26,7 @@
         src: "{{ item }}"
         dest: /etc/sudoers.d
         validate: /usr/sbin/visudo -csf %s
+      loop: "{{ sudoers_filename }}"
 
     - name: Change PasswordAuthenticaion
       ansible.builtin.lineinfile:

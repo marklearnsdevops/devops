@@ -1,5 +1,2 @@
-users:
+sudoers_filename:
 - admin
-- user1
-
-
