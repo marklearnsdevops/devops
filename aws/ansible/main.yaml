@@ -30,7 +30,7 @@
 
     - name: Change PasswordAuthenticaion
       ansible.builtin.lineinfile:
-        path: /etc/ssh/sshd_config.d/50-cloud-init.conf
+        path: /etc/ssh/sshd_config.d/90-cloud-init-users
         regexp: '^PasswordAuthentication'
         line: PasswordAuthentication yes
         owner: root
