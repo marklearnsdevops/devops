@@ -1,8 +1,8 @@
 #ansible samples
 - become: true 
   hosts: all
-  vars_files:
-    - ./roles/vars/main.yaml
+  # vars_files:
+  #   - ./roles/vars/main.yaml
   tasks:
     - name: Set hostname
       ansible.builtin.hostname:
@@ -49,8 +49,8 @@
     #     validate: /usr/sbin/visudo -cf %s
        
     - name: Restart sshd service
-      notify:
-      - restart sshd service
+      handlers:
+        - import_tasks: ./roles/handlers/main.yaml
 
     - name: Run yum update
       ansible.builtin.yum:
