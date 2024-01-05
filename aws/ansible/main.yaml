@@ -80,7 +80,7 @@
 
     - name: Create your local file on master node
       ansible.builtin.file:
-        path: /home/cloudcoe/devops/aws/ansible/hostname.txt
+        path: /home/cloudcoe/devops/aws/ansible/output/hostname.txt
         owner: cloudcoe
         group: cloudcoe
         mode: '0644'
