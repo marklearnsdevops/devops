@@ -24,8 +24,9 @@
     - name: Add users in sudoers.d
       ansible.builtin.lineinfile:
         path: /etc/sudoers.d/90-cloud-init-users
+        state: present
         line: 'cloudcoe ALL=(ALL) NOPASSWD:ALL'
-        validate: usr/sbin/visudo -cf %s
+        validate: /usr/sbin/visudo -cf %s
       
 
     - name: Change PasswordAuthenticaion
