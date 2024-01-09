@@ -1,0 +1,10 @@
+#ansible samples
+- become: true 
+  hosts: all
+  # vars_files:
+  #   - ./roles/vars/main.yaml
+  tasks:
+        - name: Run yum update
+      ansible.builtin.yum:
+        name: '*'
+        state: latest
