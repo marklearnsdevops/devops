@@ -1,3 +1,4 @@
 [servers]
-slave ansible_host=10.0.0.5 ansible_connection=ssh ansible_user=ec2-user
+
+slave ansible_host=10.0.0.5 ansible_connection=ssh ansible_user=cloudcoe
 
